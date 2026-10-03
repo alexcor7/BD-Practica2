@@ -12,6 +12,5 @@ Thumbs.db
 # Carpetas de editores
 .vscode/
 .idea/
-
 # Datos generados por PostgreSQL/Docker
 entorno/data/
