@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: BD-practica1
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2drkrne7
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+# Archivos de respaldo
+*.bak
+*.backup
+
+# Archivos de configuración local
+.env
+
+# Archivos generados por sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Carpetas de editores
+.vscode/
+.idea/
+
+# Datos generados por PostgreSQL/Docker
+entorno/data/
