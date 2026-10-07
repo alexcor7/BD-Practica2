@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Central</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        nav {
+            background-color: #5d4037;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #5d4037;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .producto {
+            background-color: #efebe9;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #5d4037;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e2723;
+        }
+
+        footer {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Café Central</h1>
+        <p>Un buen café para comenzar el día</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main>
+
+        <section id="inicio">
+            <h2>Bienvenido</h2>
+            <p>
+                Bienvenido a Café Central. Aquí podrás disfrutar de diferentes
+                tipos de café, bebidas y postres en un ambiente agradable.
+            </p>
+
+            <button onclick="saludar()">Conoce más</button>
+        </section>
+
+        <section id="menu">
+            <h2>Nuestro menú</h2>
+
+            <div class="menu">
+
+                <div class="producto">
+                    <h3>☕ Café Americano</h3>
+                    <p>Café clásico recién preparado.</p>
+                    <strong>$35</strong>
+                </div>
+
+                <div class="producto">
+                    <h3>🥛 Capuchino</h3>
+                    <p>Café con leche y espuma.</p>
+                    <strong>$50</strong>
+                </div>
+
+                <div class="producto">
+                    <h3>🍰 Pastel</h3>
+                    <p>Rebanada de pastel del día.</p>
+                    <strong>$45</strong>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <h2>Sobre nosotros</h2>
+
+            <p>
+                Café Central es una cafetería ficticia creada como ejemplo
+                de una página web sencilla utilizando HTML y CSS.
+            </p>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+
+            <p>Correo: contacto@cafecentral.com</p>
+            <p>Teléfono: 55 1234 5678</p>
+            <p>Horario: Lunes a sábado de 8:00 a 20:00</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Café Central</p>
+    </footer>
+
+    <script>
+        function saludar() {
+            alert("¡Gracias por visitar Café Central!");
+        }
+    </script>
+
+</body>
+</html>
