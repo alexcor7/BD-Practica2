@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESCOM Deportes | Portal deportivo</title>
+  <style>
+    :root {
+      --navy: #112d50;
+      --blue: #235aa4;
+      --sky: #eaf2fb;
+      --bg: #f4f7fb;
+      --white: #fff;
+      --muted: #63758b;
+      --line: #dce5ef;
+      --green: #16845b;
+      --amber: #ae710d;
+      --red: #c23d46;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background: var(--bg);
+      color: #182b43;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .top {
+      background: var(--navy);
+      color: white;
+      padding: 18px max(22px, calc((100vw - 1200px) / 2));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: .2px;
+    }
+
+    .brand span {
+      color: #83c7ff;
+    }
+
+    .sub {
+      font-size: 12px;
+      opacity: .8;
+    }
+
+    .shell {
+      max-width: 1200px;
+      margin: 28px auto;
+      padding: 0 22px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #153b69, #2764a6);
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 35px);
+    }
+
+    .hero p {
+      margin: 0;
+      color: #d9e8fa;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffffff22;
+      border: 1px solid #ffffff44;
+      padding: 8px 12px;
+      border-radius: 100px;
+      font-size: 13px;
+    }
+
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 24px 0;
+    }
+
+    .role {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 10px;
+      padding: 11px 19px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .role.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 17px;
+    }
+
+    .card {
+      grid-column: span 6;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 5px 18px #19385c08;
+    }
+
+    .card.full {
+      grid-column: span 12;
+    }
+
+    .card.third {
+      grid-column: span 4;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin: 0 0 16px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin: 0 0 9px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tiny {
+      font-size: 12px;
+    }
+
+    .metric {
+      font-size: 29px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .data {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .data div {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 9px;
+    }
+
+    .data strong {
+      display: block;
+      margin-top: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #e6f6ef;
+      color: var(--green);
+    }
+
+    .badge.warn {
+      background: #fff2d9;
+      color: var(--amber);
+    }
+
+    .badge.danger {
+      background: #ffe8ea;
+      color: var(--red);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 650;
+      background: #f4f7fb;
+    }
+
+    td,
+    th {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .scroll {
+      overflow-x: auto;
+    }
+
+    .btn {
+      border: 0;
+      background: var(--blue);
+      color: white;
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-weight: 650;
+    }
+
+    .btn.light {
+      background: var(--sky);
+      color: var(--navy);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .note {
+      background: #eef5fc;
+      border-left: 4px solid var(--blue);
+      padding: 13px 16px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .logo {
+      height: 52px;
+      width: 52px;
+      background: #ffffff20;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+    }
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--sky);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    input,
+    select {
+      border: 1px solid var(--line);
+      padding: 10px;
+      border-radius: 8px;
+      background: white;
+      min-width: 0;
+    }
+
+    input {
+      flex: 1;
+    }
+
+    .inline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .pill {
+      border-radius: 12px;
+      padding: 14px;
+      background: var(--sky);
+    }
+
+    @media(max-width: 800px) {
+      .card,
+      .card.third {
+        grid-column: span 12;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .data {
+        grid-template-columns: 1fr;
+      }
+
+      .top {
+        padding: 16px 22px;
+      }
+
+      .shell {
+        margin-top: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div>
+      <div class="brand">ESCOM <span>Deportes</span></div>
+      <div class="sub">Instituto Politécnico Nacional · Portal de gestión deportiva</div>
+    </div>
+    <div class="logo" aria-hidden="true">🏅</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <h1>Sistema Integral de Gestión Deportiva</h1>
+        <p>Selecciones, estudiantes, actividades, documentos y justificantes en un solo lugar.</p>
+      </div>
+      <span class="tag">Prototipo estático · Datos demostrativos</span>
+    </section>
+
+    <nav class="roles" aria-label="Seleccionar perfil">
+      <button class="role active" data-role="estudiante" aria-pressed="true">🎓 Estudiante</button>
+      <button class="role" data-role="entrenador" aria-pressed="false">⚽ Entrenador</button>
+      <button class="role" data-role="administrativo" aria-pressed="false">🗂️ Administrativo</button>
+    </nav>
+
+    <!-- SECCIÓN ESTUDIANTE -->
+    <section class="section active" id="estudiante">
+      <div class="grid">
+        <article class="card full">
+          <div class="inline">
+            <div class="avatar">
+              <div class="avatar-circle">🎓</div>
+              <div>
+                <h2 style="margin:0">Perfil de estudiante</h2>
+                <span class="muted">Información personal, académica y deportiva</span>
+              </div>
+            </div>
+            <span class="badge">Integrante activo</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Mis datos</h2>
+          <div class="data">
+            <div><span class="muted tiny">Nombre</span><strong>Andrea Martínez López</strong></div>
+            <div><span class="muted tiny">Boleta</span><strong>2026000123</strong></div>
+            <div><span class="muted tiny">Carrera</span><strong>Ingeniería en Sistemas Computacionales</strong></div>
+            <div><span class="muted tiny">Grupo / turno</span><strong>3CV2 · Vespertino</strong></div>
+            <div><span class="muted tiny">Teléfono</span><strong>55 •••• 4321</strong></div>
+            <div><span class="muted tiny">Contacto de emergencia</span><strong>Registrado</strong></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Mi situación académica y deportiva</h2>
+          <div class="data">
+            <div><span class="muted tiny">Promedio</span><strong class="metric">8.4</strong></div>
+            <div><span class="muted tiny">Materias adeudadas</span><strong class="metric">0</strong></div>
+            <div><span class="muted tiny">Selección</span><strong>Fútbol representativo</strong></div>
+            <div><span class="muted tiny">Entrenador</span><strong>Prof. Diego Espinoza</strong></div>
+          </div>
+          <p><span class="badge">Elegible para evaluación de beca</span></p>
+          <p class="tiny muted">La elegibilidad mostrada es académica y no garantiza el otorgamiento de una beca.</p>
+        </article>
+
+        <article class="card full">
+          <div class="inline">
+            <h2>Mis documentos médicos</h2>
+            <button class="btn" data-demo="Carga de documento">+ Subir documento</button>
+          </div>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Documento</th>
+                  <th>Emisión</th>
+                  <th>Vencimiento</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Certificado médico</td>
+                  <td>15/08/2026</td>
+                  <td>15/08/2027</td>
+                  <td><span class="badge">Vigente</span></td>
+                </tr>
+                <tr>
+                  <td>Evaluación física</td>
+                  <td>01/10/2025</td>
+                  <td>25/10/2026</td>
+                  <td><span class="badge warn">Próximo a vencer</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Próximas actividades</h2>
+          <p>
+            <strong>Entrenamiento de fútbol</strong><br>
+            <span class="muted tiny">12 de octubre · 13:30–15:30 · Campo ESCOM</span>
+          </p>
+          <hr style="border:0;border-top:1px solid var(--line)">
+          <p>
+            <strong>Partido de preparación</strong><br>
+            <span class="muted tiny">14 de octubre · 14:00–16:00 · Campo ESCOM</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Solicitar justificante</h2>
+          <p class="muted">Selecciona una actividad y registra el motivo de tu ausencia académica.</p>
+          <div class="form-row">
+            <select aria-label="Actividad">
+              <option>Entrenamiento · 12 de octubre</option>
+              <option>Partido · 14 de octubre</option>
+            </select>
+            <input placeholder="Motivo de la solicitud" aria-label="Motivo">
+          </div>
+          <p><button class="btn" data-demo="Solicitud de justificante">Enviar solicitud</button></p>
+          <div class="note">Flujo: revisión del entrenador → validación administrativa → generación del justificante.</div>
+        </article>
+
+        <article class="card full">
+          <h2>Mis solicitudes</h2>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Folio</th>
+                  <th>Actividad</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SOL-018</td>
+                  <td>Partido de preparación</td>
+                  <td><span class="badge warn">Pendiente de gestor</span></td>
+                </tr>
+                <tr>
+                  <td>SOL-014</td>
+                  <td>Competencia institucional</td>
+                  <td><span class="badge">Autorizada</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ENTRENADOR -->
+    <section class="section" id="entrenador">
+      <div class="grid">
+        <article class="card full">
+          <div class="avatar">
+            <div class="avatar-circle">⚽</div>
+            <div>
+              <h2 style="margin:0">Panel del entrenador</h2>
+              <span class="muted">Prof. Diego Espinoza · Selección de fútbol representativo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card third">
+          <h2>Atletas registrados</h2>
+          <div class="metric">24</div>
+          <span class="muted tiny">Integrantes de la selección</span>
+        </article>
+
+        <article class="card third">
+          <h2>Documentos por vencer</h2>
+          <div class="metric">3</div>
+          <span class="badge warn">Requieren seguimiento</span>
+        </article>
+
+        <article class="card third">
+          <h2>Solicitudes por revisar</h2>
+          <div class="metric">2</div>
+          <span class="muted tiny">Primer nivel de autorización</span>
+        </article>
+
+        <article class="card full">
+          <h2>Plantilla de la selección</h2>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Boleta</th>
+                  <th>Estudiante</th>
+                  <th>Promedio</th>
+                  <th>Materias adeudadas</th>
+                  <th>Documentación</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2026000123</td>
+                  <td>Andrea Martínez López</td>
+                  <td>8.4</td>
+                  <td>0</td>
+                  <td><span class="badge warn">Por vencer</span></td>
+                  <td><button class="btn light" data-demo="Detalle del atleta">Ver perfil</button></td>
+                </tr>
+                <tr>
+                  <td>2026000456</td>
+                  <td>Carlos Hernández</td>
+                  <td>7.8</td>
+                  <td>1</td>
+                  <td><span class="badge">Vigente</span></td>
+                  <td><button class="btn light" data-demo="Detalle del atleta">Ver perfil</button></td>
+                </tr>
+                <tr>
+                  <td>2026000789</td>
+                  <td>Fernanda Ruiz</td>
+                  <td>9.1</td>
+                  <td>0</td>
+                  <td><span class="badge danger">Vencido</span></td>
+                  <td><button class="btn light" data-demo="Detalle del atleta">Ver perfil</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tiny muted">La participación deportiva requiere documentos médicos obligatorios y vigentes.</p>
+        </article>
+
+        <article class="card">
+          <h2>Agenda de actividades</h2>
+          <p>
+            <strong>Entrenamiento técnico</strong><br>
+            <span class="muted tiny">12/10/2026 · 13:30 · Campo ESCOM</span>
+          </p>
+          <p>
+            <strong>Partido de preparación</strong><br>
+            <span class="muted tiny">14/10/2026 · 14:00 · Campo ESCOM</span>
+          </p>
+          <button class="btn" data-demo="Programar actividad">+ Programar actividad</button>
+        </article>
+
+        <article class="card">
+          <h2>Solicitudes pendientes</h2>
+          <p>
+            <strong>SOL-021 · Carlos Hernández</strong><br>
+            <span class="muted tiny">Entrenamiento del 12 de octubre</span>
+          </p>
+          <div class="actions">
+            <button class="btn" data-demo="Aprobación del entrenador">Aprobar</button>
+            <button class="btn light" data-demo="Rechazo del entrenador">Rechazar</button>
+          </div>
+          <p class="tiny muted">Una aprobación del entrenador pasa a validación del gestor deportivo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ADMINISTRATIVO -->
+    <section class="section" id="administrativo">
+      <div class="grid">
+        <article class="card full">
+          <div class="avatar">
+            <div class="avatar-circle">🗂️</div>
+            <div>
+              <h2 style="margin:0">Panel administrativo</h2>
+              <span class="muted">Gestión institucional de deportes, selecciones, entrenadores y justificantes</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card third">
+          <h2>Deportes disponibles</h2>
+          <div class="metric">5</div>
+          <span class="muted tiny">Fútbol, voleibol, básquetbol, béisbol y tocho</span>
+        </article>
+
+        <article class="card third">
+          <h2>Selecciones</h2>
+          <div class="metric">5</div>
+          <span class="muted tiny">Selecciones registradas</span>
+        </article>
+
+        <article class="card third">
+          <h2>Validaciones pendientes</h2>
+          <div class="metric">4</div>
+          <span class="badge warn">Segundo nivel</span>
+        </article>
+
+        <article class="card full">
+          <div class="inline">
+            <h2>Administración de selecciones</h2>
+            <button class="btn" data-demo="Crear selección">+ Nueva selección</button>
+          </div>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Selección</th>
+                  <th>Deporte</th>
+                  <th>Entrenador</th>
+                  <th>Estudiantes</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fútbol representativo</td>
+                  <td>Fútbol</td>
+                  <td>Diego Espinoza</td>
+                  <td>24</td>
+                  <td><span class="badge">Activa</span></td>
+                </tr>
+                <tr>
+                  <td>Voleibol ESCOM</td>
+                  <td>Voleibol</td>
+                  <td>Laura González</td>
+                  <td>16</td>
+                  <td><span class="badge">Activa</span></td>
+                </tr>
+                <tr>
+                  <td>Básquetbol ESCOM</td>
+                  <td>Básquetbol</td>
+                  <td>Marco Ramírez</td>
+                  <td>14</td>
+                  <td><span class="badge">Activa</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Gestión de entrenadores</h2>
+          <p class="muted">Consulta responsables, administra cuentas y asigna entrenadores a selecciones.</p>
+          <div class="actions">
+            <button class="btn" data-demo="Crear entrenador">+ Registrar entrenador</button>
+            <button class="btn light" data-demo="Administrar entrenadores">Ver entrenadores</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Alertas médicas</h2>
+          <p>
+            <span class="badge danger">2 vencidos</span>
+            <span class="badge warn">3 próximos a vencer</span>
+          </p>
+          <p class="muted">Consulta el estado documental de los atletas para dar seguimiento con sus entrenadores.</p>
+          <button class="btn light" data-demo="Reporte médico">Consultar reporte</button>
+        </article>
+
+        <article class="card full">
+          <h2>Validación final de justificantes</h2>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Solicitud</th>
+                  <th>Estudiante</th>
+                  <th>Actividad</th>
+                  <th>Entrenador</th>
+                  <th>Validación final</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SOL-018</td>
+                  <td>Andrea Martínez</td>
+                  <td>Partido de preparación</td>
+                  <td><span class="badge">Aprobado</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="btn" data-demo="Validación final">Autorizar</button>
+                      <button class="btn light" data-demo="Rechazo final">Rechazar</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>SOL-019</td>
+                  <td>Carlos Hernández</td>
+                  <td>Competencia institucional</td>
+                  <td><span class="badge">Aprobado</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="btn" data-demo="Validación final">Autorizar</button>
+                      <button class="btn light" data-demo="Rechazo final">Rechazar</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tiny muted">Tras la aprobación administrativa se genera automáticamente el justificante con la fecha y horario de la actividad.</p>
+        </article>
+
+        <article class="card full">
+          <h2>Reportes institucionales</h2>
+          <div class="actions">
+            <button class="btn light" data-demo="Reporte de atletas">Atletas por selección</button>
+            <button class="btn light" data-demo="Reporte de becas">Evaluaciones de beca</button>
+            <button class="btn light" data-demo="Reporte de actividades">Actividades programadas</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    ESCOM · Instituto Politécnico Nacional · Prototipo académico estático · Sin conexión a base de datos
+  </footer>
+
+  <script>
+    const roleButtons = document.querySelectorAll('[data-role]');
+    roleButtons.forEach(button => button.addEventListener('click', () => {
+      const role = button.dataset.role;
+      roleButtons.forEach(b => {
+        const selected = b === button;
+        b.classList.toggle('active', selected);
+        b.setAttribute('aria-pressed', String(selected));
+      });
+      document.querySelectorAll('.section').forEach(section => section.classList.toggle('active', section.id === role));
+    }));
+
+    document.querySelectorAll('[data-demo]').forEach(button => button.addEventListener('click', () => alert(button.dataset.demo + '\n\nEsta es una vista estática de demostración. La función se implementará cuando se conecte el backend.')));
+  </script>
+</body>
+</html>
