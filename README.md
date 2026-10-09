@@ -41,7 +41,7 @@ Como parte del Ejercicio 6, cada integrante del equipo realizó tres propuestas 
 ### Artículo 2 - NFL: Robust Learned Index via Distribution Transformation
 
 - **Referencia APA 7:** Wu, S., Cui, Y., Yu, J., Sun, X., Kuo, T.-W., & Xue, C. J. (2022). NFL: Robust learned index via distribution transformation. Proceedings of the VLDB Endowment, 15(10), 2188–2200.
-- **DOI:** Pendiente.
+- **DOI:** [DOI.](https://doi.org/10.14778/3547305.3547322)
 - **Integrante responsable:** Luis Villanueva
 
 
