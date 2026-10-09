@@ -46,7 +46,9 @@ Como parte del Ejercicio 6, cada integrante del equipo realizó tres propuestas 
 
 
 ## Presentación de proyectos
-[Presentación](https://alexcor7.github.io/BD-Practica2/proyectopropio.html)
+[Presentación](exposicion/Entrega_proyectos.pdf)
+
+[Landing page proyecto propio](https://alexcor7.github.io/BD-Practica2/proyectopropio.html)
 
 ## Uso de inteligencia artificial generativa
 
