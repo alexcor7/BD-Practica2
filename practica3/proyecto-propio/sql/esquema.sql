@@ -80,7 +80,7 @@ CREATE TABLE seleccion (
     id_seleccion  INTEGER GENERATED ALWAYS AS IDENTITY,
     nombre        VARCHAR(80)  NOT NULL,
     rama          VARCHAR(10)  NOT NULL,
-    estado        VARCHAR(20)  NOT NULL DEFAULT 'en_reclutamiento',
+    estado        VARCHAR(20)  NOT NULL DEFAULT 'activa',
     id_deporte    INTEGER      NOT NULL,
     id_entrenador INTEGER      NOT NULL,
     CONSTRAINT pk_seleccion        PRIMARY KEY (id_seleccion),
