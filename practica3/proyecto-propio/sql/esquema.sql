@@ -26,7 +26,7 @@ CREATE TABLE deporte (
 CREATE TABLE personal_deportivo (
     id_personal       INTEGER GENERATED ALWAYS AS IDENTITY,
     nombre            VARCHAR(120) NOT NULL,
-    telefono          VARCHAR(15),
+    telefono          VARCHAR(15) NOT NULL,
     correo            VARCHAR(100) NOT NULL,
     tipo              VARCHAR(10)  NOT NULL,          -- discriminador
     CONSTRAINT pk_personal_deportivo PRIMARY KEY (id_personal),
@@ -86,7 +86,7 @@ CREATE TABLE seleccion (
     CONSTRAINT pk_seleccion        PRIMARY KEY (id_seleccion),
     CONSTRAINT uq_seleccion_nombre UNIQUE (nombre, rama),
     CONSTRAINT uq_seleccion_entrenador UNIQUE (id_entrenador),   -- máx. una selección por entrenador
-    CONSTRAINT ck_seleccion_rama   CHECK (rama IN ('varonil', 'femenil', 'mixto')),
+    CONSTRAINT ck_seleccion_rama   CHECK (rama IN ('varonil', 'femenil')),
     CONSTRAINT ck_seleccion_estado CHECK (estado IN ('activa', 'inactiva')),
     CONSTRAINT fk_seleccion_deporte FOREIGN KEY (id_deporte)
         REFERENCES deporte (id_deporte)
@@ -98,21 +98,21 @@ CREATE TABLE seleccion (
 
 -- ---------------------------------------------------------------------
 -- Regla 1 + Regla 2 + Regla 4 · ESTUDIANTE
---   estudiante (0,1) — pertenece — (0,N) selección
---   -> FK id_seleccion opcional (admite NULL)
+--   estudiante (1,1) — pertenece — (1,N) selección
+--   -> FK id_seleccion obligatoria (NOT NULL)
 -- ---------------------------------------------------------------------
 CREATE TABLE estudiante (
     boleta              VARCHAR(10)  NOT NULL,
     nombre              VARCHAR(60)  NOT NULL,
     apellido_paterno    VARCHAR(60)  NOT NULL,
     apellido_materno    VARCHAR(60),
-    telefono            VARCHAR(15),
+    telefono            VARCHAR(15)  NOT NULL,
     correo              VARCHAR(100) NOT NULL,
-    nss                 VARCHAR(11),
+    nss                 VARCHAR(11)  NOT NULL,
     carrera             VARCHAR(100) NOT NULL,
     promedio            NUMERIC(4,2) NOT NULL,
     adeudos             SMALLINT     NOT NULL DEFAULT 0,   -- materias adeudadas
-    id_seleccion        INTEGER,
+    id_seleccion        INTEGER      NOT NULL,
     CONSTRAINT pk_estudiante        PRIMARY KEY (boleta),
     CONSTRAINT uq_estudiante_correo UNIQUE (correo),
     CONSTRAINT uq_estudiante_nss    UNIQUE (nss),
@@ -123,7 +123,7 @@ CREATE TABLE estudiante (
     CONSTRAINT ck_estudiante_adeud  CHECK (adeudos >= 0),
     CONSTRAINT fk_estudiante_seleccion FOREIGN KEY (id_seleccion)
         REFERENCES seleccion (id_seleccion)
-        ON DELETE SET NULL ON UPDATE CASCADE
+        ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- ---------------------------------------------------------------------
