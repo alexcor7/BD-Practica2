@@ -2,9 +2,9 @@
 
 A static prototype of a school sports management portal (students, teams, sports activities, medical documents and absence justifications), built as the own project of our Databases course.
 
-| | |
+| | | 
 |---|---|
-| Academic program / curriculum | Ingeniería en Sistemas Computacionales / 2020 |
+| Academic program | Ingeniería en Sistemas Computacionales / 2020 |
 | Course | Bases de Datos |
 
 ## Addresses
@@ -12,14 +12,15 @@ A static prototype of a school sports management portal (students, teams, sports
 - **Site (GitHub Pages):** https://alexcor7.github.io/BD-Practica2/proyectopropio.html
 - **Repository:** https://github.com/alexcor7/BD-Practica2
 - **Assigned project (fork):** https://github.com/alexcor7/Seismic-Data-Visualization-System
-- **Other hosts (exercise 5):** _TODO: add the two addresses once published_
+- **Netlify:**  https://sistemaintegraldegestiondeportivaipn.netlify.app/
+- **Neocities:** https://escomsistemadeportivo.neocities.org/
 
 ## Team
 
 | Member | Contribution |
 |---|---|
 | Alexis Cortés Rios (`alexcor7`) | Landing page, repository and Pages setup, setup of the assigned project (fork), relational schema, data loading and integrity practices, schema change for her own improvement proposal |
-| Luis Villanueva Morales | _TODO: confirm_ — improvement proposal [#4](https://github.com/alexcor7/BD-Practica2/issues/4), review of pull requests, schema change for his own proposal |
+| Luis Villanueva Morales | Improvement proposal [#4](https://github.com/alexcor7/BD-Practica2/issues/4), review of pull requests, schema change for his own proposal |
 
 ## View the site and run it locally
 
@@ -37,7 +38,7 @@ python3 -m http.server 8000
 
 - Practice 2 (EER model, article analysis, proposals): [README.es.md](README.es.md), [`proyecto-propio/`](proyecto-propio/), [`proyecto-asignado/`](proyecto-asignado/), [`propuestas/`](propuestas/)
 - Practice 3 (EER to relational): [`practica3/README.md`](practica3/README.md)
-- Practices 4 and 5 (domains, loading, roles, referential integrity): [`practica4/`](practica4/), [`practica5/`](practica5/)
+[`practica5/`](practica5/)
 - Practice 3.1 (web publishing):
   - [`practica31/investigacion.md`](practica31/investigacion.md) — frontend, backend and hosting
   - [`practica31/identificacion.md`](practica31/identificacion.md) — frontend and backend of the assigned project
